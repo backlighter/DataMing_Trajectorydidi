@@ -8,7 +8,14 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-
+# 创建一个字典来存储 df2 数据框
+df2_dict = {}
+i=0
+# 初始化全局变量
+max_lng = float('-inf')
+max_lat = float('-inf')
+min_lng = float('inf')
+min_lat = float('inf')
 def handle_Month(input_path,output_path): #处理月数据
     #导入超大的轨迹数据文件
     print("开始读取大文件了哦~~~~~~~~")
@@ -16,11 +23,7 @@ def handle_Month(input_path,output_path): #处理月数据
     df = pd.read_csv(input_path,header=None)
     print("大文件读取完毕 sir!!!!~~")
     df.columns=['orderid','driverid','trac_list']
-    # 初始化全局变量
-    max_lng = float('-inf')
-    max_lat = float('-inf')
-    min_lng = float('inf')
-    min_lat = float('inf')
+    
 
     #处理精度到小数点后5位
     def round_coordinates(df, decimal_places=5):
@@ -30,9 +33,7 @@ def handle_Month(input_path,output_path): #处理月数据
 
 
 
-    # 创建一个字典来存储 df2 数据框
-    df2_dict = {}
-    i=0
+    
     def process_element(row):
         global i
         global max_lng, max_lat, min_lng, min_lat
